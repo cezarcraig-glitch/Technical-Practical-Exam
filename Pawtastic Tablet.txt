@@ -1,0 +1,198 @@
+
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pawtastic Tablet</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #0f0f12;
+  color: #fff;
+}
+
+.page { display: flex; flex-direction: column; }
+
+/* HERO */
+.hero {
+  background: linear-gradient(180deg, #0e1c2f, #0a1220);
+  padding: 24px;
+  text-align: center;
+}
+
+.brand { display: flex; justify-content: center; gap: 10px; font-weight: 700; }
+.logo {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: #ffd6dc; color: #222; display: grid; place-items: center;
+}
+
+.hero h1 { font-size: 22px; line-height: 1.3; margin: 14px 0; }
+.hero p { font-size: 14px; color: #b8c0ff; }
+
+/* GRID */
+.grid { margin-top: 18px; display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+.grid img {
+  width: 100%; height: 80px; object-fit: cover; border-radius: 10px;
+  animation: float 4s ease-in-out infinite;
+}
+@keyframes float { 50% { transform: translateY(-6px);} }
+
+.card { background: #f6e7e3; padding: 20px; }
+.form-card { background:#fff; border-radius:16px; padding:18px; color:#333; }
+.form-card h2 { font-size:18px; margin-bottom:14px; }
+
+.field { margin-bottom:12px; }
+.label { font-size:12px; margin-bottom:4px; }
+
+.input, .textarea {
+  width:100%; height:38px; border-radius:8px;
+  border:1px solid #ddd; padding:0 10px; font-size:14px;
+}
+.textarea { height:64px; resize:none; }
+
+.segmented {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #ececec;
+  border-radius: 999px;
+  height: 36px;
+  overflow: hidden;
+}
+.segmented button {
+  border:none; background:none; z-index:2;
+  font-size:13px; color:#777; cursor:pointer;
+}
+.slider {
+  position:absolute; width:50%; height:100%;
+  background:#f0d9d6; border-radius:999px;
+  left:0; top:0; transition:.3s;
+}
+.segmented .active { color:#333; font-weight:600; }
+
+
+.time { display:flex; gap:6px; }
+.time button {
+  flex:1; height:32px; border-radius:999px;
+  border:none; background:#ececec; font-size:12px;
+  cursor:pointer;
+}
+.time .active { background:#565c74; color:#fff; }
+
+
+.btn {
+  width:100%; height:42px; border-radius:999px;
+  border:none; background:#565c74; color:#fff; font-weight:600;
+}
+</style>
+</head>
+
+<body>
+<div class="page">
+
+<section class="hero">
+  <div class="brand"><div class="logo">🐾</div> PAWTASTIC</div>
+  <h1>Expert care for your furry, feather, or scaley friend</h1>
+  <p>We know how stressful it is to leave your pets at home alone...</p>
+
+  <div class="grid">
+    <img src="https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=300&q=80">
+    <img src="https://images.unsplash.com/photo-1507149833265-60c372daea22?auto=format&fit=crop&w=300&q=80">
+    <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=300&q=80">
+  </div>
+</section>
+
+<section class="card">
+<div class="form-card">
+<h2>We'll take your dog for a walk. Just tell us when!</h2>
+
+<div class="field">
+  <div class="label">Name*</div>
+  <input class="input">
+</div>
+
+<div class="field">
+  <div class="label">Email*</div>
+  <input class="input">
+</div>
+
+<div class="field">
+  <div class="label">Phone Number*</div>
+  <input class="input" id="phone" placeholder="Numbers only">
+</div>
+
+<div class="field">
+  <div class="label">Frequency*</div>
+  <div class="segmented">
+    <div class="slider" id="freqSlider"></div>
+    <button id="one" class="active">One Time</button>
+    <button id="rec">Recurring</button>
+  </div>
+</div>
+
+<div class="field">
+  <div class="label">Date*</div>
+  <input class="input" type="date">
+</div>
+
+<div class="field">
+  <div class="label">Time*</div>
+  <div class="time">
+    <button>Morning</button>
+    <button>Afternoon</button>
+    <button>Evening</button>
+  </div>
+</div>
+
+<div class="field">
+  <div class="label">Notes</div>
+  <textarea class="textarea" placeholder="Notes for your sitter"></textarea>
+</div>
+
+<button class="btn">Schedule</button>
+</div>
+</section>
+
+</div>
+
+<script>
+
+document.getElementById("phone").addEventListener("input", e => {
+  e.target.value = e.target.value.replace(/\D/g, "");
+});
+
+
+const slider = document.getElementById("freqSlider");
+const one = document.getElementById("one");
+const rec = document.getElementById("rec");
+
+one.onclick = () => {
+  slider.style.left = "0";
+  one.classList.add("active");
+  rec.classList.remove("active");
+};
+
+rec.onclick = () => {
+  slider.style.left = "50%";
+  rec.classList.add("active");
+  one.classList.remove("active");
+};
+
+
+document.querySelectorAll(".time button").forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll(".time button").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+  };
+});
+</script>
+
+</body>
+</html>

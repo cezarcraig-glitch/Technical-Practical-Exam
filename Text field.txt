@@ -1,0 +1,97 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text Field Layout</title>
+
+<style>
+body {
+    background-color: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.text-field-container {
+    width: 365px;
+    height: 385px;
+    border: 1px dashed #a855f7;
+    border-radius: 5px;
+    padding: 20px;
+    box-sizing: border-box;
+    color: #cbd5e1;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.required {
+    color: red;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.input-default {
+    background-color: #f3f4f6;
+    color: #555;
+}
+
+.input-filled {
+    background-color: #e5e7eb;
+    color: #333;
+}
+
+.input-disabled {
+    background-color: #9ca3af;
+    color: #555;
+}
+
+/* Error input */
+.input-error {
+    background-color: #f3f4f6;
+    border: 2px solid red;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 6px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="text-field-container">
+
+    <label>Name<span class="required">*</span></label>
+    <input type="text" placeholder="Your Name" class="input-default">
+
+    <label>Name<span class="required">*</span></label>
+    <input type="text" value="John Doe" class="input-filled">
+
+    <label>Name<span class="required">*</span></label>
+    <input type="text" placeholder="Your Name" class="input-disabled" disabled>
+
+    <label>Name<span class="required">*</span></label>
+    <input type="text" placeholder="Your Name" class="input-error">
+    <div class="error-message">The name field is required.</div>
+
+</div>
+
+</body>
+</html>
