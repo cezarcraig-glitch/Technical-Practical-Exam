@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Pawtastic – Desktop Large</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+body{
+  margin:0;
+  background:#0f0f12;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+/* FRAME */
+.desktop-lg{
+  width:1920px;
+  height:1080px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+}
+
+/* LEFT */
+.hero{
+  background:#565b77;
+  color:#fff;
+  padding:96px;
+  display:flex;
+  flex-direction:column;
+  gap:28px;
+}
+
+.brand{
+  display:flex;
+  gap:14px;
+  align-items:center;
+  font-weight:600;
+}
+
+.logo{
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  background:#f0d9d6;
+  display:grid;
+  place-items:center;
+  color:#333;
+  font-size:22px;
+}
+
+.hero h1{
+  font-size:38px;
+  max-width:560px;
+  line-height:1.25;
+}
+
+.hero p{
+  max-width:560px;
+  color:#e4e6ff;
+  line-height:1.6;
+  font-size:16px;
+}
+
+/* IMAGE GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px;
+  max-width:620px;
+}
+
+.grid img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:20px;
+  animation:float 6s ease-in-out infinite;
+  transition:.4s ease;
+}
+
+/* stagger animation */
+.grid img:nth-child(1){ animation-delay:0s; }
+.grid img:nth-child(2){ animation-delay:1s; }
+.grid img:nth-child(3){ animation-delay:2s; }
+.grid img:nth-child(4){ animation-delay:3s; }
+
+.grid img:hover{
+  transform:scale(1.05) translateY(-8px);
+  box-shadow:0 18px 40px rgba(0,0,0,.35);
+}
+
+/* floating effect */
+@keyframes float{
+  0%{ transform:translateY(0); }
+  50%{ transform:translateY(-10px); }
+  100%{ transform:translateY(0); }
+}
+
+/* RIGHT */
+.card{
+  background:#faefec;
+  padding:96px;
+  display:flex;
+  align-items:center;
+}
+
+.form{
+  width:100%;
+  max-width:600px;
+}
+
+.form h2{
+  font-size:40px;
+  color:#5a5f7a;
+  margin-bottom:26px;
+}
+
+/* FORM */
+.field{ margin-bottom:14px; }
+.label{ font-size:13px; color:#666; margin-bottom:6px; }
+
+.input,.textarea{
+  width:100%;
+  height:44px;
+  border:none;
+  border-radius:10px;
+  padding:0 14px;
+  font-size:14px;
+}
+
+.textarea{ height:90px; resize:none; }
+
+.row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+/* SEGMENTED */
+.segmented{
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  height:40px;
+  background:#eee;
+  border-radius:999px;
+  overflow:hidden;
+}
+.segmented button{
+  border:none;
+  background:none;
+  z-index:2;
+  cursor:pointer;
+  font-size:13px;
+}
+.slider{
+  position:absolute;
+  width:50%;
+  height:100%;
+  background:#f0d9d6;
+  border-radius:999px;
+  transition:.3s;
+}
+.segmented .active{ color:#333; }
+
+/* TIME */
+.time{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+.time button{
+  height:36px;
+  border:none;
+  border-radius:999px;
+  background:#eee;
+  cursor:pointer;
+}
+.time .active{ background:#565b77;color:#fff; }
+
+/* BUTTON */
+.btn{
+  width:100%;
+  height:48px;
+  border-radius:999px;
+  border:none;
+  background:#565b77;
+  color:#fff;
+  font-weight:600;
+  margin-top:16px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="desktop-lg">
+
+  <!-- LEFT -->
+  <section class="hero">
+    <div class="brand">
+      <div class="logo">🐾</div> PAWTASTIC
+    </div>
+
+    <h1>Expert care for your furry, feathery, or scaley friend</h1>
+    <p>
+      We know how stressful it is to leave your pets at home alone.
+      We're a team of experienced animal caregivers, well connected
+      to local veterinarians. Trust us to love them like our own,
+      and to keep them safe and happy till you're home.
+    </p>
+
+    <div class="grid">
+      <img src="https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=600&q=80">
+      <img src="https://images.unsplash.com/photo-1507149833265-60c372daea22?auto=format&fit=crop&w=600&q=80">
+      <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=600&q=80">
+      <img src="https://images.unsplash.com/photo-1525253086316-d0c936c814f8?auto=format&fit=crop&w=600&q=80">
+    </div>
+  </section>
+
+  <!-- RIGHT -->
+  <section class="card">
+    <div class="form">
+      <h2>We’ll take your dog for a walk. Just tell us when!</h2>
+
+      <div class="field">
+        <div class="label">Name*</div>
+        <input class="input" placeholder="Your Name">
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <div class="label">Email*</div>
+          <input class="input" placeholder="john@gmail.com">
+        </div>
+        <div class="field">
+          <div class="label">Phone Number*</div>
+          <input class="input" id="phone" placeholder="+63 XXXXXXXXXX">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <div class="label">Frequency*</div>
+          <div class="segmented">
+            <div class="slider" id="freqSlider"></div>
+            <button id="one" class="active">One Time</button>
+            <button id="rec">Recurring</button>
+          </div>
+        </div>
+        <div class="field">
+          <div class="label">Date*</div>
+          <input class="input" type="date">
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="label">Time*</div>
+        <div class="time">
+          <button>Morning</button>
+          <button class="active">Afternoon</button>
+          <button>Evening</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="label">Notes</div>
+        <textarea class="textarea" placeholder="Notes for your sitter"></textarea>
+      </div>
+
+      <button class="btn">Schedule</button>
+    </div>
+  </section>
+
+</div>
+
+<script>
+// Phone numbers only
+document.getElementById("phone").addEventListener("input", e=>{
+  e.target.value=e.target.value.replace(/\D/g,"");
+});
+
+// Frequency toggle
+const slider=document.getElementById("freqSlider");
+const one=document.getElementById("one");
+const rec=document.getElementById("rec");
+
+one.onclick=()=>{ slider.style.left="0"; one.classList.add("active"); rec.classList.remove("active"); }
+rec.onclick=()=>{ slider.style.left="50%"; rec.classList.add("active"); one.classList.remove("active"); }
+
+// Time select
+document.querySelectorAll(".time button").forEach(btn=>{
+  btn.onclick=()=>{
+    document.querySelectorAll(".time button").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+  };
+});
+</script>
+
+</body>
+</html>
